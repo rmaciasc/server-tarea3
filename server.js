@@ -7,7 +7,6 @@ const app = express();
 
 app.get('/productos', (req, res) => {
   contenedor.getAll().then((products) => {
-    // res.send(`Vamos a ver ${JSON.stringify(products, null, 2)}`);
     res.send(products);
   });
 });
@@ -17,6 +16,13 @@ app.get('/productoRandom', (req, res) => {
     const rand_prod = products[Math.floor(Math.random() * products.length)];
     res.send(rand_prod);
   });
+});
+
+app.get('/', (req, res) => {
+  res.send(
+    `Intenta con <a href=/productos > productos </a>
+    o con un <a href=/productoRandom>producto random</a>.`
+  );
 });
 
 const PORT = 8080;
